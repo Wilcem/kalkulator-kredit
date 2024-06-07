@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UTS</title>
+    <link
+      href="style_page.css"
+      rel="stylesheet"
+      type="text/css" />
+    <link
+      href="tabel.css"
+      rel="stylesheet"
+      type="text/css" />
+  </head>
+  <body>
+    <!-- Tabel Kalkulator Kredit -->
+    <form id="loanForm" onsubmit="return calculateLoan()">
+      <script language="javascript" src="accounting.js"></script>
+      <script language="javascript" src="checker.js"></script>
+      <script language="javascript">
+        function checkValue() {
+          var formName = document.calc_simulasi_kredit_umum;
+
+          if (loan_amount == "") {
+            alert("Error: Jumlah Pinjaman tidak boleh kosong.");
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (isNaN(loan_amount) || loan_amount == "") {
+            alert(
+              "Error: Jumlah Pinjaman harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (!is_int(loan_amount)) {
+            alert(
+              "Error: Jumlah Pinjaman harus berupa angka bulat, tidak boleh ada koma atau titik."
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_amount) > 9999999999999999) {
+            alert(
+              "Error: Jumlah Pinjaman terlalu besar. Max: 9999999999999999"
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_amount) < 1) {
+            alert("Error: Jumlah Pinjaman terlalu kecil. Min: 1");
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          var loan_term = formName.loan_term.value;
+
+          if (loan_term == "") {
+            alert("Error: Lama Pinjaman tidak boleh kosong.");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (isNaN(loan_term) || loan_term == "") {
+            alert(
+              "Error: Lama Pinjaman harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (!is_int(loan_term)) {
+            alert(
+              "Error: Lama Pinjaman harus berupa angka bulat, tidak boleh ada koma atau titik."
+            );
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_term) > 500) {
+            alert("Error: Lama Pinjaman terlalu besar. Max: 500");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_term) < 1) {
+            alert("Error: Lama Pinjaman terlalu kecil. Min: 1");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          var interest_rate = formName.interest_rate.value;
+
+          if (interest_rate == "") {
+            alert("Error: Bunga Tahunan tidak boleh kosong.");
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (isNaN(interest_rate) || interest_rate == "") {
+            alert(
+              "Error: Bunga Tahunan harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (parseFloat(interest_rate) > 200) {
+            alert("Error: Bunga Tahunan terlalu besar. Max: 200");
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (parseFloat(interest_rate) < 0) {
+            alert("Error: Bunga Tahunan terlalu kecil. Min: 0");
+            formName.interest_rate.focus();
+            return false;
+          }
+        }
+
+        function checkValue() {
+          var formName = document.calc_simulasi_kredit_umum;
+
+          var loan_amount = formName.loan_amount.value;
+
+          if (loan_amount == "") {
+            alert("Error: Jumlah Pinjaman tidak boleh kosong.");
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (isNaN(loan_amount) || loan_amount == "") {
+            alert(
+              "Error: Jumlah Pinjaman harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (!is_int(loan_amount)) {
+            alert(
+              "Error: Jumlah Pinjaman harus berupa angka bulat, tidak boleh ada koma atau titik."
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_amount) > 9999999999999999) {
+            alert(
+              "Error: Jumlah Pinjaman terlalu besar. Max: 9999999999999999"
+            );
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_amount) < 1) {
+            alert("Error: Jumlah Pinjaman terlalu kecil. Min: 1");
+            formName.loan_amount.focus();
+            return false;
+          }
+
+          var loan_term = formName.loan_term.value;
+
+          if (loan_term == "") {
+            alert("Error: Lama Pinjaman tidak boleh kosong.");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (isNaN(loan_term) || loan_term == "") {
+            alert(
+              "Error: Lama Pinjaman harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (!is_int(loan_term)) {
+            alert(
+              "Error: Lama Pinjaman harus berupa angka bulat, tidak boleh ada koma atau titik."
+            );
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_term) > 500) {
+            alert("Error: Lama Pinjaman terlalu besar. Max: 500");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          if (parseFloat(loan_term) < 1) {
+            alert("Error: Lama Pinjaman terlalu kecil. Min: 1");
+            formName.loan_term.focus();
+            return false;
+          }
+
+          var interest_rate = formName.interest_rate.value;
+
+          if (interest_rate == "") {
+            alert("Error: Bunga Tahunan tidak boleh kosong.");
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (isNaN(interest_rate) || interest_rate == "") {
+            alert(
+              "Error: Bunga Tahunan harus berupa angka. Untuk koma, silakan ganti dengan titik."
+            );
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (parseFloat(interest_rate) > 200) {
+            alert("Error: Bunga Tahunan terlalu besar. Max: 200");
+            formName.interest_rate.focus();
+            return false;
+          }
+
+          if (parseFloat(interest_rate) < 0) {
+            alert("Error: Bunga Tahunan terlalu kecil. Min: 0");
+            formName.interest_rate.focus();
+            return false;
+          }
+        }
+        function calculateLoan() {
+          var form = document.getElementById("loanForm");
+          var loan_amount = parseFloat(
+            form.loan_amount.value.replace(/,/g, "")
+          );
+          var loan_term = parseInt(form.loan_term.value);
+          var interest_rate = parseFloat(form.interest_rate.value);
+          var monthly_interest_rate = interest_rate * 10 / 100 / 12;
+          var bunga_perbulan = monthly_interest_rate * loan_amount * 10;
+          var monthly_payment = loan_amount / loan_term;
+          // Update Data Anda
+          document.getElementById("data_loan_amount").innerText = `Rp ${numberWithCommas(loan_amount.toFixed(2))}`;
+          document.getElementById("data_loan_term").innerHTML = `${loan_term} bulan (${(loan_term / 12).toFixed(2)} tahun)`;
+          document.getElementById("data_interest_rate").innerHTML = `${interest_rate} % / tahun (${(interest_rate / 12).toFixed(2)} % / bulan)`;
+          document.getElementById("data_cicilan_tiap").innerText = form.cicilan_tiap.value;
+          document.getElementById("data_mulai_meminjam").innerText = `${form.mulai_meminjam_month.value} ${form.mulai_meminjam_year.value}`;
+          // Update Angsuran Anda
+          var angsuran_pokok = monthly_payment;
+          var angsuran_bunga = bunga_perbulan;
+          var total_angsuran = angsuran_pokok + angsuran_bunga;
+          document.getElementById("angsuran_pokok").innerHTML = `<div class="cr">Rp ${numberWithCommas(
+            angsuran_pokok.toFixed(2)
+          )}</div>`;
+          document.getElementById(
+            "angsuran_bunga"
+          ).innerHTML = `<div class="cr">Rp ${numberWithCommas(
+            angsuran_bunga.toFixed(2)
+          )}</div>`;
+          document.getElementById(
+            "total_angsuran"
+          ).innerHTML = `<div class="cr">Rp ${numberWithCommas(
+            total_angsuran.toFixed(2)
+          )}</div>`;
+        }
+        function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+      </script>
+      <script language="javascript" src="print.js"></script>
+      <table class="table_form" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr class="table_header">
+            <td colspan="3">Kalkulator Kredit</td>
+            <td style="text-align: center;">ahmad wildan muzaki/221303087</td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Nama dan NPM</td>
+            <td>:</td>
+            <td class="table_right">
+              <div>
+                <input
+                  type="text"
+                  value="ahmad wildan muzaki/2213030087"
+                  class="input_long"
+                  name="loan_amount"
+                  id="input_loan_amount"
+                  onkeyup="showCurrency('input_loan_amount', 'id_loan_amount')" />
+              
+          <tr class="bg_odd">
+            <td class="table_left">Jumlah Pinjaman</td>
+            <td>:</td>
+            <td class="table_right">
+              <div>
+                <input
+                  type="text"
+                  value="120000000"
+                  class="input_long"
+                  name="loan_amount"
+                  id="input_loan_amount"
+                  onkeyup="showCurrency('input_loan_amount', 'id_loan_amount')" />
+                rupiah
+
+                <div class="help_icon">
+                  <img
+                    src="https://www.simulasikredit.com/images/help_icon.gif"
+                    alt="masukkan angka, tidak boleh pakai koma atau titik"
+                    title="masukkan angka, tidak boleh pakai koma atau titik"
+                    onclick='alert("masukkan angka, tidak boleh pakai koma atau titik");' />
+                </div>
+              </div>
+              <div class="show_currency">
+                Rp <span id="id_loan_amount">120.000.000,00</span>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Lama Pinjaman</td>
+            <td>:</td>
+            <td class="table_right">
+              <div>
+                <input
+                  type="text"
+                  value="24"
+                  class="input_short"
+                  name="loan_term"
+                  id="input_loan_term"
+                  onkeyup="showDivision('input_loan_term', 'id_loan_term', 'year_to_month')" />
+                bulan
+
+                <div class="help_icon">
+                  <img
+                    src="https://www.simulasikredit.com/images/help_icon.gif"
+                    alt="masukkan angka, tidak boleh pakai koma atau titik"
+                    title="masukkan angka, tidak boleh pakai koma atau titik"
+                    onclick='alert("masukkan angka, tidak boleh pakai koma atau titik");' />
+                </div>
+              </div>
+              <div class="show_currency">
+                = <span id="id_loan_term">2.00</span> tahun
+              </div>
+            </td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Bunga Pinjaman</td>
+            <td>:</td>
+            <td class="table_right">
+              <div>
+                <input
+                  type="text"
+                  value="8.6"
+                  class="input_short"
+                  name="interest_rate"
+                  id="input_interest_rate"
+                  onkeyup="showDivision('input_interest_rate', 'id_interest_rate', 'year_to_month')" />
+                % / tahun
+
+                <div class="help_icon">
+                  <img
+                    src="https://www.simulasikredit.com/images/help_icon.gif"
+                    alt="masukkan angka, misal 6.5"
+                    title="masukkan angka, misal 6.5"
+                    onclick='alert("masukkan angka, misal 6.5");' />
+                </div>
+              </div>
+              <div class="show_currency">
+                = <span id="id_interest_rate">0.72</span> % / bulan
+              </div>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Cicilan Tiap</td>
+            <td>:</td>
+            <td class="table_right">
+              <select class="input_long" name="cicilan_tiap">
+                <option value="BULAN" selected>BULAN</option>
+                <option value="TAHUN">TAHUN</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Mulai Meminjam</td>
+            <td>:</td>
+            <td class="table_right">
+              <select class="input_short" name="mulai_meminjam_month">
+                <option value="1">Jan</option>
+                <option value="2">Feb</option>
+                <option value="3">Mar</option>
+                <option value="4">Apr</option>
+                <option value="5">May</option>
+                <option value="6">Jun</option>
+                <option value="7">Jul</option>
+                <option value="8">Aug</option>
+                <option value="9">Sep</option>
+                <option value="10" selected="">Oct</option>
+                <option value="11">Nov</option>
+                <option value="12">Dec</option></select
+              ><select class="input_short" name="mulai_meminjam_year">
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023" selected="">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Perhitungan Bunga</td>
+            <td>:</td>
+            <td class="table_right">
+              <select class="input_long">
+                <option value="FLAT" selected>FLAT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>
+              <input
+                type="button"
+                value="Kalkulasi"
+                name="submit"
+                class="button_submit"
+                onclick="calculateLoan()" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Tabel Data Anda -->
+      <table class="table_result" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr class="table_header">
+            <td colspan="3">Data Anda</td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Jumlah Pinjaman</td>
+            <td>:</td>
+            <td class="table_right" id="data_loan_amount">Rp 120.000.000,00</td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Lama Pinjaman</td>
+            <td>:</td>
+            <td class="table_right" id="data_loan_term">
+              5 Bulan
+              <div class="table_description">(0.42 tahun)</div>
+            </td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Bunga per Tahun</td>
+            <td>:</td>
+            <td class="table_right" id="data_interest_rate">
+              2.4 % / tahun
+              <div class="table_description">(0.2 % / bulan)</div>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Cicilan Tiap</td>
+            <td>:</td>
+            <td class="table_right" id="data_cicilan_tiap">BULAN</td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Mulai Meminjam</td>
+            <td>:</td>
+            <td class="table_right" id="data_mulai_meminjam">Oct 2023</td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Perhitungan Bunga</td>
+            <td>:</td>
+            <td class="table_right">
+              <strong>FLAT</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <!-- Tabel Angsuran Anda -->
+      <table class="table_result" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr class="table_header">
+            <td colspan="3">Angsuran Anda</td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left">Angsuran Pokok per BULAN</td>
+            <td>:</td>
+            <td class="table_right" id="angsuran_pokok">
+              <div class="cr">Rp 24.000.000,00</div>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Angsuran Bunga per BULAN</td>
+            <td>:</td>
+            <td class="table_right" id="angsuran_bunga">
+              <div class="cr">Rp 240.000,00</div>
+            </td>
+          </tr>
+          <tr class="bg_odd">
+            <td class="table_left"></td>
+            <td></td>
+            <td class="table_right">
+              <div class="cr">________________ (+)</div>
+            </td>
+          </tr>
+          <tr class="bg_even">
+            <td class="table_left">Total Angsuran per BULAN</td>
+            <td>:</td>
+            <td class="table_right" id="total_angsuran">
+              <div class="cr">Rp 24.240.000,00</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

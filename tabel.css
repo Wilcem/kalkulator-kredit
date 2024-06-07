@@ -1,0 +1,52 @@
+.table_form {border:1px solid #3B448F; width:100%; font-size: 100%; font-family: arial, verdana;}
+.table_form td {padding:5px; vertical-align:top; border-bottom:1px solid #EEEEEE; padding-top: 10px;}
+.table_form .table_header {background-color: #3B448F; color:#FFFFFF; font-family: arial, verdana; font-size:110%; font-weight:bold;}
+.table_header td:last-child{text-align: center;}
+.table_form .table_description {color:#777777; font-size:90%; font-family: arial, verdana;}
+.table_form .table_left {text-align:right; width:40%; }
+.table_form .table_right {text-align:left; width:58%; }
+.table_form .input_long {width: 50%}
+.table_form .input_short {width: 30%}
+.table_form .bg_odd {background-color:#EBEDFA}
+
+.error {color:red; font-size:110%; font-family: arial, verdana; padding:5px; border: 1px solid #E04869; margin-bottom: 5px;}
+
+.table_result {font-family: arial, verdana;width:100%}
+.table_result td {padding:5px 10px 5px 10px; vertical-align:top; border-bottom:1px solid #EBEDFA; }
+.table_result .table_header {background-color: #3B448F; color:#FFFFFF; font-size:110%; font-weight:bold;}
+.table_result .table_description {color:#333333; font-size:95%;}
+.table_result .table_left {text-align:right; width:40%; }
+.table_result .table_right {text-align:left; width:58%; }
+
+
+.table_result .table_sum {font-size:110%; border: 2px solid #555555; font-weight: bold; background-color:#EFEFEF;}
+
+.table_result .bg_odd {background-color:#EBEDFA}
+.table_result .table_column td {border-left:1px solid #3B448F; text-align: right}
+.table_result li {padding: 2px;}
+
+.show_currency {clear: both; font-size:95%; width: 57%; margin-top: 3px; padding:5px; color:#A88D42;}
+
+.disclaimer {padding: 5px; font-family: verdana, arial; background-color:#F5D5DB; border: 1px solid #C92443; width: 90%; font-size: 0.9em; line-height: 1.5em; margin-bottom: 5px;}
+
+.button_submit {padding:5px; font-size: 110%; width: 50%;}
+
+.result_total {font-weight: bold; background-color: #D3EEF0; padding: 5px 0px 5px 0px; color: #333333}
+
+.table_description_floating {color:#577802; font-size:90%; font-family: arial, verdana; padding-top: 10px;}
+
+.plus_minus {margin-left: 10px; font-family: monospace}
+.plus_minus a {border: 1px solid #CCCCCC; background-color: #EFEFEF; padding: 2px; margin-left: 5px; text-decoration: none; cursor:pointer}
+.plus_minus a:hover {background-color: #CCCCCC}
+
+.to_right {width:170px; float:right; font-size: 90%; margin-left: 5px;}
+.to_right ul {margin:0px;}
+.to_right li {margin:0px;}
+
+.help_icon {display:inline; float:right; cursor: pointer}
+
+.cr {text-align: left; width: 50%}
+
+.table_list {margin-top: 10px; border-bottom:1px solid #CCCCCC; }
+.table_list td {padding: 6px; line-height:1.4em;vertical-align:top}
+.header_list {line-height: 1.5em; font-weight: bold; padding:6px; background-color:#e5eacf; border-top:2px solid #AAAAAA}
